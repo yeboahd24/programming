@@ -1,26 +1,34 @@
-def binary_search(data, elem):
-	'''The data is the ordered sequece
-	and elem is the element we want to search,
-	low is the initial index, high is the last
-	index'''
+#!usr/bin/env/python3
 
-	low = 0
-	high = len(data)-1
+# Code by Dominic(Python Developer)
+# Binary search is only done if the array is odered
+# Complexity: O(logN)
 
-	while low < high:
-		middle = (low + high)//2
 
-		if data[middle]==elem:
-			return middle
+def binary_search(array_, value):
+	lower_bound = 0  # first index of the array
+	upper_bound = (len(array_) - 1) # last index of the array
 
-		elif data[middle] > elem:
-			high = middle-1
+	while lower_bound <= upper_bound:
+		midpoint = (upper_bound + lower_bound)//2  # middle number of the array
+		value_at_midpoint = array_[midpoint]
 
-		else:
-			low = middle+1
-	return -1
+		if value == value_at_midpoint:
+			return value
 
-b = [1,2,5,7,9]
-print(binary_search(b, 5))
+		elif value > value_at_midpoint:
+			lower_bound = midpoint + 1
 
+		elif value < value_at_midpoint:
+			upper_bound = midpoint - 1
+
+	return None
+
+
+# Test Case
+data = [1, 2, 3, 4, 5]
+print(binary_search(data, 5))
+
+		
+		
 
